@@ -13,7 +13,7 @@
  */
 function setup() {
     // once at the beginning
-    createCanvas(640, 480);
+    createCanvas(640, 640);
 }
 
 
@@ -22,7 +22,23 @@ function setup() {
  */
 function draw() {
     // The pink desktop 
-    background(255, 100, 100);
+    background(150, 150, 150);
     // The blank piece of paper
-    rect(200, 80, 240, 320);
+    fill(255);
+    stroke(0, 0, 0);
+    strokeWeight(3);
+    ellipse(320, 320, 480);
+    pop();
+
+    push();
+    fill("black");
+    noStroke();
+    ellipse(320, 320, 480, 350);
+    pop();
+
+    push();
+    fill(255);
+    noStroke();
+    ellipse(320, 320, 200);
+    pop();
 }
