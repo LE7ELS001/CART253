@@ -1,8 +1,7 @@
 /**
- * UFO on a Dark Night
- * Pippin Barr
+ * learn changing variables
+ * Junming He
  * 
- * A UFO. On a dark night. It just sits there?
  */
 
 "use strict";
@@ -33,6 +32,16 @@ function setup() {
  * Displays a UFO
 */
 function draw() {
+    //Dawn
+    skyShade += 0.5;
+
+
+    ufo.y -= 2;
+    ufo.x = ufo.x + cos(frameCount * 0.1) * 3 + 0.6
+
+    ufo.fill *= 0.997;
+    ufo.width /= 1.005;
+    ufo.height /= 1.005;
     // Display the sky
     background(skyShade);
 
