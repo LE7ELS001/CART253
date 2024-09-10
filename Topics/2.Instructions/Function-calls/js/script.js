@@ -23,7 +23,10 @@ function setup() {
 function draw() {
     // The pink desktop 
     background(150, 150, 150);
-    // The blank piece of paper
+    // // The blank piece of paper
+
+
+
     fill(255);
     stroke(0, 0, 0);
     strokeWeight(3);
