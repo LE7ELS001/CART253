@@ -1,14 +1,6 @@
 /**
- * My House
- * Pippin Barr
- * 
- * Draws a house with shapes.
- * 
- * Disclaimer: Not actually my house.
- * 
- * Uses:
- * p5.js
- * https://p5js.org/
+ * Starter House example
+ * Junming He
  */
 
 /**
@@ -25,6 +17,29 @@ function draw() {
     // The sky
     background(150, 200, 250);
 
+    //draw a cloud
+    drawCloud();
+
+    drawGround();
+
+    drawHouse();
+
+    drawRoof();
+
+    drawWindow();
+
+    // An entrace
+
+    drawDoor();
+
+    drawDoorKnob();
+}
+
+
+/**
+ * function to draw clouds
+ */
+function drawCloud() {
     // A cloud
     push();
     noStroke();
@@ -38,21 +53,27 @@ function draw() {
     ellipse(190, 130, 60, 60);
     ellipse(220, 120, 60, 60);
     pop();
+}
 
+function drawGround() {
     // The ground
     push();
     noStroke();
     fill(200);
     rect(0, 400, 640, 480);
     pop();
+}
 
+function drawHouse() {
     // The main body of the house
     push();
     noStroke();
     fill(250, 250, 200);
     rect(200, 240, 280, 180);
     pop();
+}
 
+function drawRoof() {
     // The roof
     push();
     noStroke();
@@ -60,7 +81,9 @@ function draw() {
     fill("#dc143c");
     triangle(180, 240, 340, 120, 500, 240);
     pop();
+}
 
+function drawWindow() {
     // A window
     push();
     // You can also write colour names from the CSS standard in quotes
@@ -70,16 +93,18 @@ function draw() {
     fill("blanchedalmond");
     rect(220, 260, 80, 80);
     pop();
+}
 
-    // An entrace
-
+function drawDoor() {
     // The door
     push();
     noStroke();
     fill(0, 128, 0);
     rect(320, 300, 80, 120);
     pop();
+}
 
+function drawDoorKnob() {
     // The doorknob
     push();
     noStroke();
