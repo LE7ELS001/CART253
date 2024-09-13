@@ -1,9 +1,8 @@
 /**
- * Debugging Variables
- * Pippin Barr
+ * Debugging Variables learning
+ * Junming He
  * 
- * Displays a bug that moves across the screen. But it doesn't work.
- * Because it has bugs.
+ * Let's try it
  */
 
 "use strict";
@@ -13,23 +12,25 @@ const bgColor = "#87ceeb"; // Sky blue
 // The bug
 const bug = {
     // Position and dimensions
-    x: 250
+    x: 250,
     y: 0,
     w: 20,
+    h: 30,
+
     // Movement
     velocity: {
-        x: -100,
-        y: -12, // Starts moving down
+        x: -10,
+        y: 12, // Starts moving down
     },
     // Colour
-    color: "#87ceeb" // Dark brown
-
+    color: "#874444" // Dark brown
+}
 
 /**
  * Create the canvas
 */
 function setup() {
-        createCanvas(500, 500);
+    createCanvas(500, 500);
 }
 
 
@@ -37,15 +38,15 @@ function setup() {
  * Updates and draws the bug
 */
 function draw() {
-    background(bgColour);
+    background(bgColor);
 
     moveBug();
     drawBug();
 }
 
 function moveBug() {
-    bug.xx = bug.x + bug.velocity.x;
-    bug.y == bug.y + bug.velocity.y;
+    bug.x = bug.x + bug.velocity.x;
+    bug.y = bug.y + bug.velocity.y;
 }
 
 /**
@@ -56,12 +57,12 @@ function drawBug() {
     push();
     noStroke();
     fill(bug.color);
-    ellipse(bug.x, bug.y, bug.width, bug.height);
+    ellipse(bug.x, bug.y, bug.w, bug.h);
     pop();
 
     // Legs
     push();
-    stroke(bug.stroke);
+    stroke(bug.color);
     // Thicken the legs a bit
     strokeWeight(2);
     // Three lines horizontally across the body at different heights for the legs
