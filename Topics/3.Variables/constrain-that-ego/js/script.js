@@ -1,6 +1,6 @@
 /**
- * Constrain that Ego!
- * Pippin Barr
+ * Control the change of variable
+ * Junming He
  * 
  * This ego is out of control...
  */
@@ -12,7 +12,9 @@ let ego = {
     x: 200,
     y: 200,
     size: 1,
-    fill: 200
+    fill: 200,
+    minSize: 0,
+    maxSize: 400
 };
 
 /**
@@ -20,6 +22,7 @@ let ego = {
  */
 function setup() {
     createCanvas(400, 400);
+
 }
 
 /**
@@ -34,6 +37,7 @@ function draw() {
     ego.fill = ego.fill - 0.5;
     // Size gets bigger, symbolizing taking up emotional space
     ego.size = ego.size + 1;
+    ego.size = constrain(ego.size, ego.minSize, ego.maxSize);
 
     // Draw the ego
     push();

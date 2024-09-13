@@ -1,8 +1,8 @@
 /**
- * Self-Esteem
- * Pippin Barr
+ * Another way to create Variable
+ * Junming He
  * 
- * A portrait of Pippin's self-esteem on a sunny day.
+ * Rua
  */
 
 "use strict";
