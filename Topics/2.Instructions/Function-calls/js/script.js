@@ -8,12 +8,25 @@
 
 "use strict";
 
+
+let originMouseX;
+let originMouseY;
+let newMouseX;
+let newMouseY;
+let extraCanvas;
 /**
  * Creates the canvas for our work
  */
 function setup() {
     // once at the beginning
     createCanvas(640, 640);
+    extraCanvas = createGraphics(640, 640);
+    extraCanvas.clear();
+
+    //set mouse move or not trigger
+    originMouseX = mouseX;
+    originMouseY = mouseY;
+
 }
 
 
@@ -26,7 +39,7 @@ function draw() {
     // // The blank piece of paper
 
 
-
+    push();
     fill(255);
     stroke(0, 0, 0);
     strokeWeight(3);
@@ -39,9 +52,22 @@ function draw() {
     ellipse(320, 320, 480, 350);
     pop();
 
+    if (newMouseX != originMouseX || newMouseY != originMouseY) {
+        mouseMoved();
+        newMouseX = originMouseX;
+        newMouseY = originMouseY;
+    }
+    else {
+        mouseMoved();
+    }
+
+
+}
+
+function mouseMoved() {
     push();
-    fill(255);
-    noStroke();
-    ellipse(320, 320, 200);
+    extraCanvas.fill(255);
+    extraCanvas.noStroke();
+    extraCanvas.ellipse(mouseX, mouseY, 200);
     pop();
 }
