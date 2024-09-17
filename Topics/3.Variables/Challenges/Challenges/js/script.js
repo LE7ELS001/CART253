@@ -19,7 +19,14 @@ let mrFurious = {
         b: 225
     },
     greenReduce: -0.5,
-    BlueReduce: -0.5
+    BlueReduce: -0.5,
+    Shake: {
+        X: 5,
+        y: 5,
+        speedX: 1,
+        speedY: 1.5
+    }
+
 };
 //sky
 let sky = {
@@ -59,11 +66,17 @@ let bird = {
 
 }
 
+let maxShakeX = mrFurious.x + mrFurious.Shake.X;
+let minShakeX = mrFurious.x - mrFurious.Shake.X;
+let maxShakeY = mrFurious.y + mrFurious.Shake.y;
+let minShakeY = mrFurious.y - mrFurious.Shake.y;
+
 /**
  * OH LOOK I DIDN'T DESCRIBE SETUP!!
 */
 function setup() {
     createCanvas(400, 400);
+
 }
 
 
@@ -126,16 +139,29 @@ function draw() {
 
     }
 
+    //FuriousShake
+    //let TmpX = random(-mrFurious.ShakeRange.X, mrFurious.ShakeRange.X);
+    //let TmpY = random(-mrFurious.ShakeRange.y, mrFurious.ShakeRange.y);
+
+    //mrFurious.x += TmpX;
+    //mrFurious.y += TmpY;
+    mrFurious.x += mrFurious.Shake.speedX;
+    mrFurious.y += mrFurious.Shake.speedY;
+
+    if (mrFurious.x >= maxShakeX || mrFurious.x <= minShakeX) {
+        mrFurious.Shake.speedX *= -1;
+    }
+
+    if (mrFurious.y >= maxShakeY || mrFurious.y <= minShakeY) {
+        mrFurious.Shake.speedY *= -1;
+    }
 
 
 
 
-    //console.log(bird.x);
-    console.log(bird.y);
-    //console.log(bird.acceleration.x);
-    console.log(bird.acceleration.y);
-    //console.log(bird.velocity.x);
-    console.log(bird.velocity.y);
+
+
+    console.log(mrFurious.x);
 
 
     // Draw Mr. Furious as a coloured circle
