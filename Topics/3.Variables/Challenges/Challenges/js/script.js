@@ -45,20 +45,17 @@ let bird = {
         y: 0
     },
     acceleration: {
-        x: 0.05,
-        y: 0.01
+        x: 0.25,
+        y: 0.35
     },
     maxSpeed: 2,
     minSpeed: -2,
     flyingRange: {
         maxHorizontal: 370,
         minHorizontal: 20,
-        maxVertical: 220,
-        minVertical: 120
+        maxVertical: 180,
+        minVertical: 100
     },
-    isReachTheEdgeX: false,
-    isReachTheEdgeY: false,
-    yPullUp: 0.5
 
 }
 
@@ -116,38 +113,20 @@ function draw() {
     bird.y = constrain(bird.y, bird.flyingRange.minVertical, bird.flyingRange.maxVertical);
 
 
-    if (bird.x == 370 || bird.x == 20) {
-        bird.isReachTheEdgeX = true;
-        //bird.x += bird.velocity.x;
+    if (bird.x == bird.flyingRange.maxHorizontal || bird.x == bird.flyingRange.minHorizontal) {
+        bird.velocity.x /= -2;
+        bird.acceleration.x *= -1;
 
     }
 
 
-    if (bird.y == 200 || bird.y == 70) {
-        bird.isReachTheEdgeY = true;
-        console.log("ativeY true");
-        bird.yPullUp = -bird.yPullUp;
-        //bird.y -= bird.acceleration.y;
-    }
-
-
-
-
-    if (bird.isReachTheEdgeX == true) {
-        bird.velocity.x = 0;
-        bird.acceleration.x = -bird.acceleration.x;
-        //bird.acceleration.x *= -1;
-        bird.isReachTheEdgeX = false;
-    }
-
-    if (bird.isReachTheEdgeY == true) {
-        bird.velocity.y = 0;
-        bird.acceleration.y = -bird.acceleration.y;
-        bird.y += bird.yPullUp;
-
-        bird.isReachTheEdgeY == false;
+    if (bird.y == bird.flyingRange.maxVertical || bird.y == bird.flyingRange.minVertical) {
+        bird.velocity.y /= -1;
+        bird.acceleration.y *= -1;
 
     }
+
+
 
 
 
