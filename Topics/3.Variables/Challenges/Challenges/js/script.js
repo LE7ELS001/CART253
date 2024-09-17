@@ -21,13 +21,17 @@ let mrFurious = {
     greenReduce: -0.5,
     BlueReduce: -0.5,
     Shake: {
-        X: 5,
-        y: 5,
-        speedX: 1,
-        speedY: 1.5
+        velocityX: 0,
+        velocityY: 0,
+        X: 10,
+        y: 13,
+        speedX: 0.08,
+        speedY: 0.05,
+        velocityLimitX: 10,
+        velocityLimitY: 8
     }
 
-};
+}
 //sky
 let sky = {
     red: 160,
@@ -114,7 +118,6 @@ function draw() {
     //bird flying 
     bird.velocity.x += bird.acceleration.x;
     bird.velocity.y += bird.acceleration.y;
-    console.log(bird.velocity.y);
 
     bird.velocity.x = constrain(bird.velocity.x, bird.minSpeed, bird.maxSpeed);
     bird.velocity.y = constrain(bird.velocity.y, bird.minSpeed, bird.maxSpeed);
@@ -145,14 +148,23 @@ function draw() {
 
     //mrFurious.x += TmpX;
     //mrFurious.y += TmpY;
-    mrFurious.x += mrFurious.Shake.speedX;
-    mrFurious.y += mrFurious.Shake.speedY;
+    mrFurious.Shake.velocityX = constrain(mrFurious.Shake.velocityX, -mrFurious.Shake.velocityLimitX, mrFurious.Shake.velocityLimitX);
+    mrFurious.Shake.velocityY = constrain(mrFurious.Shake.velocityY, -mrFurious.Shake.velocityLimitY, mrFurious.Shake.velocityLimitY);
+
+    mrFurious.Shake.velocityX += mrFurious.Shake.speedX;
+    mrFurious.Shake.velocityY += mrFurious.Shake.speedY;
+    console.log(mrFurious.Shake.velocityX);
+
+    mrFurious.x += mrFurious.Shake.velocityX;
+    mrFurious.y += mrFurious.Shake.velocityY;
 
     if (mrFurious.x >= maxShakeX || mrFurious.x <= minShakeX) {
+        mrFurious.Shake.velocityX *= -1;
         mrFurious.Shake.speedX *= -1;
     }
 
     if (mrFurious.y >= maxShakeY || mrFurious.y <= minShakeY) {
+        mrFurious.Shake.velocityY *= -1;
         mrFurious.Shake.speedY *= -1;
     }
 
@@ -162,6 +174,7 @@ function draw() {
 
 
     console.log(mrFurious.x);
+    console.log(mrFurious.y);
 
 
     // Draw Mr. Furious as a coloured circle
