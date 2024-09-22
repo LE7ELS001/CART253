@@ -71,3 +71,9 @@ function mouseMoved() {
     extraCanvas.ellipse(mouseX, mouseY, 200);
     pop();
 }
+
+function mouseClicked() {
+    push();
+    rect(0, 0, 320, 320);
+    pop();
+}
