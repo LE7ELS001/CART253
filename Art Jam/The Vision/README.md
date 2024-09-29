@@ -2,7 +2,7 @@
 
 Junming He
 
-[View this project online](https://le7els001.github.io/CART253/)
+[View this project online](https://le7els001.github.io/CART253/ArtJam/)
 
 ## Description
 
