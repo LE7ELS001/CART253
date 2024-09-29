@@ -1,5 +1,5 @@
 /**
- * The eye 2.0 
+ * The vision
  * Junming He
  * 
  */
@@ -153,12 +153,6 @@ let eyeLashes = {
     upperAnimationDivide: 50,
     lowerAnimationDivide: 25,
 
-
-    // upperGrowingSpeedY: -0.3,
-    // upperGrowingSpeedX: -0.1,
-    // lowerGrowingSpeedX: -0.1,
-    // lowerGrowingSpeedY: 0.1
-
 }
 
 //eye lris value
@@ -207,6 +201,9 @@ let edgeData = {
     y2: undefined
 }
 
+//map
+let colorMix = 0;
+
 
 
 function setup() {
@@ -236,11 +233,21 @@ function draw() {
 
 
 
-    //calculate the left and right edge point
+    //map()
+    colorMix = map(mouseX, 0, width, -10, 50);
+
+
+
+    /**
+     * calculate the left and right edge point
+     * I add or subtract some number because of the accuracy, it won't prefectly parallel, don't know why 
+     */
+
     if (edgeData.shouldRenewData) {
         for (let i = 0; i < 1; i += edgeData.divideNumber) {
             let upperTmpX = bezierPoint(upperEyelid.x1, upperEyelid.x2, upperEyelid.x3, upperEyelid.x4, i);
             let upperTmpY = bezierPoint(upperEyelid.y1 + eyeLris.size / 2 + 6, upperEyelid.y2 + eyeLris.size / 2 + 3, upperEyelid.y3 + eyeLris.size / 2 + 5, upperEyelid.y4 + eyeLris.size / 2 + 16, i);
+
 
             for (let j = 0; j < 1; j += edgeData.divideNumber) {
                 let lowerTmpX = bezierPoint(lowerEyelid.x1, lowerEyelid.x2, lowerEyelid.x3, lowerEyelid.x4, j);
@@ -340,7 +347,6 @@ function draw() {
     //-------------------------------------------------
 
     //Draw eye lris
-    //Detect the left edge and right edge and the middle area
     if (mouseX <= edgeData.x1) {
         eyeLris.x = edgeData.x1;
         eyeLris.y = edgeData.y1;
@@ -352,7 +358,7 @@ function draw() {
     else {
         if (mouseY >= 317) {
 
-            //draw the bezier to debug the track
+            //debug
             //bezier(lowerEyelid.x1, lowerEyelid.y1 - eyeLris.size / 2 - 25, lowerEyelid.x2, lowerEyelid.y2 - eyeLris.size / 2 - 7, lowerEyelid.x3, lowerEyelid.y3 - eyeLris.size / 2 - 5, lowerEyelid.x4, lowerEyelid.y4 - eyeLris.size / 2 - 10);
 
 
@@ -377,7 +383,8 @@ function draw() {
             }
         }
         else {
-            //draw the bezier to debug the track
+
+            //debug
             //bezier(upperEyelid.x1, upperEyelid.y1 + eyeLris.size / 2 + 6, upperEyelid.x2, upperEyelid.y2 + eyeLris.size / 2 + 3, upperEyelid.x3, upperEyelid.y3 + eyeLris.size / 2 + 5, upperEyelid.x4, upperEyelid.y4 + eyeLris.size / 2 + 16);
 
             for (let i = 0; i < 1; i += upperEyelid.divideNumber) {
@@ -405,10 +412,11 @@ function draw() {
     push();
     noStroke();
     fill(eyeLris.R, eyeLris.G, eyeLris.B);
-    circle(eyeLris.x, eyeLris.y, eyeLris.size - 5);
-    //circle(mouseX, mouseY, eyeLris.size);
+    circle(eyeLris.x, eyeLris.y, eyeLris.size - 5); // -5 because the accuracy 
     pop();
 
+
+    //-----------------------------------------------
 
     //draw eye pupil
     push();
@@ -461,6 +469,7 @@ function draw() {
         /**
          * Draw eyelashes
          * include animation statement and non animation statement
+         * because the calculate speed is too fast, still figure out how to make it like an animation
          */
 
 
@@ -590,8 +599,34 @@ function draw() {
                 tmpUpperEyelid.closeActive = false;
                 tmpLowerEyelid.closeActive = false;
 
+                /**
+                 * after the eyelip close, change some value 
+                 */
+
+
+                //eye lris(size, color)
+                eyeLris.size = random(90, 120);
+                eyeLris.R = random(50, 255) + colorMix;
+                eyeLris.G = random(50, 255);
+                eyeLris.B = random(50, 255);
+
+                //eyepupil(size, color)
+                eyePupil.size = random(40, 80);
+                eyePupil.R = random(0, 255);
+                eyePupil.G = random(0, 255) + colorMix;
+                eyePupil.B = random(0, 255);
+
+                //eye lid color 
+                upperEyeFrame.color.R = random(0, 255);
+                upperEyeFrame.color.G = random(0, 255);
+                upperEyeFrame.color.B = random(0, 255) + colorMix;
+
+
+
+
 
                 //debug
+                //console.log(eyeLris.size);
                 //console.log("active1");
 
             }
@@ -606,6 +641,7 @@ function draw() {
             // console.log(tmpLowerEyelid.y3);
         }
 
+        //eyelip open
         if (tmpUpperEyelid.openActive && tmpLowerEyelid.openActive) {
             tmpUpperEyelid.y2 += tmpUpperEyelid.openSpeed;
             tmpUpperEyelid.y3 += tmpUpperEyelid.openSpeed;
@@ -621,6 +657,17 @@ function draw() {
                 isAnimationFinish = true;
                 isMouseCliked = false;
                 eyeLashes.AnimationOrNot = true;
+
+                //change the eyelashes color
+                eyeLashes.R = random(0, 255);
+                eyeLashes.G = random(0, 255) + colorMix;
+                eyeLashes.B = random(0, 255);
+
+                //change the background color
+                backgroundColor.R = random(0, 255);
+                backgroundColor.G = random(0, 255);
+                backgroundColor.B = random(0, 255) + colorMix;
+
 
                 //debug
                 //console.log("end");
@@ -646,11 +693,15 @@ function draw() {
     //----------------------------------------------------------------
 
     //debug
-    //console.log(mouseY);
     // push();
     // noFill();
     // bezier(lowerEyelid.x1, lowerEyelid.y1 - eyeLris.size / 2 - 25, lowerEyelid.x2, lowerEyelid.y2 - eyeLris.size / 2 - 7, lowerEyelid.x3, lowerEyelid.y3 - eyeLris.size / 2 - 5, lowerEyelid.x4, lowerEyelid.y4 - eyeLris.size / 2 - 10);
     // bezier(upperEyelid.x1, upperEyelid.y1 + eyeLris.size / 2 + 6, upperEyelid.x2, upperEyelid.y2 + eyeLris.size / 2 + 3, upperEyelid.x3, upperEyelid.y3 + eyeLris.size / 2 + 5, upperEyelid.x4, upperEyelid.y4 + eyeLris.size / 2 + 16);
+    // pop();
+    console.log("------------------mouseY----------------");
+    console.log(mouseY);
+    console.log("------------------mouseX----------------");
+    console.log(mouseX);
 
 }
 
