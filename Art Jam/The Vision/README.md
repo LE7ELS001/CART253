@@ -2,7 +2,7 @@
 
 Junming He
 
-[View this project online](https://LE7ELS001.github.io/LE7ELS001/CART253/ArtJam/TheVision/)
+[View this project online](https://le7els001.github.io/CART253/ArtJam/TheVision/)
 
 ## Description
 
