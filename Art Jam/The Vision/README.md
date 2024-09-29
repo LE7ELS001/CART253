@@ -1,12 +1,12 @@
 # Template p5 Project
 
-Author Name
+Junming He
 
 [View this project online](URL_FOR_THE_RUNNING_PROJECT)
 
 ## Description
 
-This description should help the reader understand what the program is, what any controls do, and perhaps what the desired experience it.
+use the mouse left buttom to interact
 
 ## Credits
 
