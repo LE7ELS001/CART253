@@ -2,11 +2,11 @@
 
 Junming He
 
-[View this project online](https://le7els001.github.io/CART253/ArtJam/)
+[View this project online](https://le7els001.github.io/The-Vision/)
 
 ## Description
 
-use the mouse left buttom to interact
+use the mouse left buttom to change the color and size
 
 ## Credits
 
