@@ -20,26 +20,7 @@ function setup() {
     createBall(200, 200);
 }
 
-/**
- * Creates a random ball
- */
-function createBall(positionX, positionY) {
-    // Create a ball object with appropriate properties
-    const newBall = {
-        // Position and dimensions
-        x: positionX,
-        y: positionY,
-        size: 20,
-        // Colour
-        fill: "#000000",
-        // Movement
-        velocity: {
-            x: random(-5, 5),
-            y: random(-5, 5)
-        }
-    };
-    balls.push(newBall);
-}
+
 
 /**
  * Moves and draws the ball
@@ -97,4 +78,25 @@ function drawBall(ball) {
 
 function mousePressed() {
     createBall(mouseX, mouseY);
+}
+
+/**
+ * Creates a random ball
+ */
+function createBall(positionX, positionY) {
+    // Create a ball object with appropriate properties
+    const newBall = {
+        // Position and dimensions
+        x: positionX,
+        y: positionY,
+        size: 20,
+        // Colour
+        fill: "#000000",
+        // Movement
+        velocity: {
+            x: random(-5, 5),
+            y: random(-5, 5)
+        }
+    };
+    balls.push(newBall);
 }
