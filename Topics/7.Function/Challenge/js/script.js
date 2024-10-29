@@ -61,12 +61,13 @@ function draw() {
 function movePaddle(paddle) {
     paddle.x = mouseX;
 
-    if (paddle.x <= paddle.width / 2) {
-        paddle.x = paddle.width / 2;
-    }
-    if (paddle.x >= width - paddle.width / 2) {
-        paddle.x = width - paddle.width / 2;
-    }
+    paddle.x = constrain(paddle.x, paddle.width / 2, width - paddle.width / 2);
+    // if (paddle.x <= paddle.width / 2) {
+    //     paddle.x = paddle.width / 2;
+    // }
+    // if (paddle.x >= width - paddle.width / 2) {
+    //     paddle.x = width - paddle.width / 2;
+    // }
 }
 
 /**
