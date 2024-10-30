@@ -27,7 +27,7 @@ function draw() {
 
     // How many legs to draw, we want three because
     // it's the legs on one side of the fly
-    const numLegs = 3;
+    const numLegs = 5;
     // Loop through the number of legs
     for (let i = 0; i < numLegs; i++) {
         // Draw a leg each time, use i to calculate the
