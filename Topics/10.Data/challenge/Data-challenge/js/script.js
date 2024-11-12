@@ -52,6 +52,7 @@ function mousePressed() {
 
     carName = random(carData.cars);
     dinosaurName = random(dinosaurData.dinosaurs);
-    mainText = "Your car's name is " + dinosaurName + " " + carName;
+    //mainText = "Your car's name is " + dinosaurName + " " + carName;
+    mainText = `Your car's name is ${dinosaurName} ${carName}`;
 
 }

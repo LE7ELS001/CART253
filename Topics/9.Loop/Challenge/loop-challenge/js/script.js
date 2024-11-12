@@ -44,7 +44,7 @@ function draw() {
 
     colorMode(HSB);
     for (let i = 0; i < height; i++) {
-        stroke(i, i, colorRange);
+        stroke(i, colorRange, colorRange);
         line(0, i, width, i)
     }
 
